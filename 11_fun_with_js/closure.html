@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+</body>
+<script>
+    function makefun(){
+        const name = "mozilla"        //ye name function ke bhar h to ye lexical scoping ke vjh se access ho paya. mtlb jb bhi function ko return krenge to sirf function ka scope ni uska lexical scope return hoega.
+        function displayname(){
+            console.log(name)
+        }
+        return displayname
+    }
+    const myfunction = makefun();
+    myfunction()
+</script>
+<script>
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = 'orange'
+    // }
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = 'green'
+    // }
+
+    function clickhandler(color){
+        return function(){
+            document.body.style.backgroundColor = `${color}`
+        }
+        
+    }
+    document.getElementById('orange').onclick = clickhandler("orange")
+    document.getElementById('green').onclick = clickhandler("green")
+
+</script>
+</html>
